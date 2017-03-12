@@ -30,3 +30,9 @@ node_modules
 \.idea/
 
 config/config\.yml
+
+data-loader/\.cache/
+
+data-loader/ContractAnalyser\.egg-info/
+
+data-loader/config/config\.yml

@@ -1,0 +1,3827 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "PragmaStatement",
+      "start_version": {
+        "type": "VersionLiteral",
+        "operator": "^",
+        "version": "0.4.2"
+      },
+      "end_version": null,
+      "start": 0,
+      "end": 23
+    },
+    {
+      "type": "ContractStatement",
+      "name": "HedgeContract1",
+      "is": [],
+      "body": [
+        {
+          "type": "StructDeclaration",
+          "name": "Investment",
+          "body": [
+            {
+              "type": "DeclarativeExpression",
+              "name": "investor",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 77,
+                "end": 84
+              },
+              "storage_location": null,
+              "start": 77,
+              "end": 93
+            },
+            {
+              "type": "DeclarativeExpression",
+              "name": "value",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 99,
+                "end": 103
+              },
+              "storage_location": null,
+              "start": 99,
+              "end": 109
+            },
+            {
+              "type": "DeclarativeExpression",
+              "name": "withdrawal",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 160,
+                "end": 164
+              },
+              "storage_location": null,
+              "start": 160,
+              "end": 175
+            },
+            {
+              "type": "DeclarativeExpression",
+              "name": "period",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 181,
+                "end": 185
+              },
+              "storage_location": null,
+              "start": 181,
+              "end": 192
+            },
+            {
+              "type": "DeclarativeExpression",
+              "name": "withdrawalLimit",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 209,
+                "end": 213
+              },
+              "storage_location": null,
+              "start": 209,
+              "end": 229
+            },
+            {
+              "type": "DeclarativeExpression",
+              "name": "sectors",
+              "literal": {
+                "type": "Type",
+                "literal": "uint8",
+                "members": [],
+                "array_parts": [
+                  null
+                ],
+                "start": 235,
+                "end": 242
+              },
+              "storage_location": null,
+              "start": 235,
+              "end": 250
+            }
+          ],
+          "start": 53,
+          "end": 273
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "creator",
+          "literal": {
+            "type": "Type",
+            "literal": "address",
+            "members": [],
+            "array_parts": [],
+            "start": 277,
+            "end": 284
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 277,
+          "end": 300
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "investAgent",
+          "literal": {
+            "type": "Type",
+            "literal": "address",
+            "members": [],
+            "array_parts": [],
+            "start": 303,
+            "end": 310
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 303,
+          "end": 330
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "buyAgent",
+          "literal": {
+            "type": "Type",
+            "literal": "address",
+            "members": [],
+            "array_parts": [],
+            "start": 333,
+            "end": 340
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 333,
+          "end": 357
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "minimumInvestment",
+          "literal": {
+            "type": "Type",
+            "literal": "uint",
+            "members": [],
+            "array_parts": [],
+            "start": 360,
+            "end": 364
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 360,
+          "end": 390
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "originalInvestment",
+          "literal": {
+            "type": "Type",
+            "literal": "uint",
+            "members": [],
+            "array_parts": [],
+            "start": 393,
+            "end": 397
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 393,
+          "end": 424
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "returnRatio",
+          "literal": {
+            "type": "Type",
+            "literal": "int",
+            "members": [],
+            "array_parts": [],
+            "start": 456,
+            "end": 459
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 456,
+          "end": 479
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "sharpe",
+          "literal": {
+            "type": "Type",
+            "literal": "int",
+            "members": [],
+            "array_parts": [],
+            "start": 482,
+            "end": 485
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 482,
+          "end": 500
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "alpha",
+          "literal": {
+            "type": "Type",
+            "literal": "int",
+            "members": [],
+            "array_parts": [],
+            "start": 503,
+            "end": 506
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 503,
+          "end": 520
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "beta",
+          "literal": {
+            "type": "Type",
+            "literal": "int",
+            "members": [],
+            "array_parts": [],
+            "start": 523,
+            "end": 526
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 523,
+          "end": 539
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "investments",
+          "literal": {
+            "type": "Type",
+            "literal": "Investment",
+            "members": [],
+            "array_parts": [
+              null
+            ],
+            "start": 575,
+            "end": 587
+          },
+          "visibility": "public",
+          "is_constant": false,
+          "value": null,
+          "start": 575,
+          "end": 607
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "pendingWithdrawals",
+          "literal": {
+            "type": "Type",
+            "literal": {
+              "type": "MappingExpression",
+              "from": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 619,
+                "end": 626
+              },
+              "to": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 630,
+                "end": 634
+              },
+              "start": 610,
+              "end": 635
+            },
+            "members": [],
+            "array_parts": [],
+            "start": 610,
+            "end": 635
+          },
+          "visibility": null,
+          "is_constant": false,
+          "value": null,
+          "start": 610,
+          "end": 655
+        },
+        {
+          "type": "StateVariableDeclaration",
+          "name": "blackList",
+          "literal": {
+            "type": "Type",
+            "literal": {
+              "type": "MappingExpression",
+              "from": {
+                "type": "Type",
+                "literal": "uint8",
+                "members": [],
+                "array_parts": [],
+                "start": 667,
+                "end": 672
+              },
+              "to": {
+                "type": "Type",
+                "literal": "uint8",
+                "members": [],
+                "array_parts": [],
+                "start": 676,
+                "end": 681
+              },
+              "start": 658,
+              "end": 682
+            },
+            "members": [],
+            "array_parts": [],
+            "start": 658,
+            "end": 682
+          },
+          "visibility": null,
+          "is_constant": false,
+          "value": null,
+          "start": 658,
+          "end": 693
+        },
+        {
+          "type": "EventDeclaration",
+          "name": "InvestmentOfferByBot",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 778,
+                "end": 782
+              },
+              "id": "amount",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 778,
+              "end": 789
+            }
+          ],
+          "is_anonymous": false,
+          "start": 751,
+          "end": 791
+        },
+        {
+          "type": "EventDeclaration",
+          "name": "NewInvestmentByUser",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 820,
+                "end": 827
+              },
+              "id": "accountAddress",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 820,
+              "end": 842
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 844,
+                "end": 848
+              },
+              "id": "amount",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 844,
+              "end": 855
+            }
+          ],
+          "is_anonymous": false,
+          "start": 794,
+          "end": 857
+        },
+        {
+          "type": "ModifierDeclaration",
+          "name": "onlyBy",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 917,
+                "end": 924
+              },
+              "id": "_account",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 917,
+              "end": 933
+            }
+          ],
+          "modifiers": null,
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "!=",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "msg",
+                      "start": 947,
+                      "end": 950
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "sender",
+                      "start": 951,
+                      "end": 957
+                    },
+                    "computed": false,
+                    "start": 947,
+                    "end": 957
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "_account",
+                    "start": 961,
+                    "end": 969
+                  },
+                  "start": 947,
+                  "end": 969
+                },
+                "consequent": {
+                  "type": "ThrowStatement",
+                  "start": 979,
+                  "end": 985
+                },
+                "alternate": null,
+                "start": 943,
+                "end": 985
+              },
+              {
+                "type": "PlaceholderStatement",
+                "start": 990,
+                "end": 992
+              }
+            ],
+            "start": 937,
+            "end": 996
+          },
+          "start": 901,
+          "end": 996
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "HedgeContract1",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 1031,
+                "end": 1035
+              },
+              "id": "_minimumInvestment",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1031,
+              "end": 1054
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 1062,
+                "end": 1069
+              },
+              "id": "_investAgent",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1062,
+              "end": 1082
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 1090,
+                "end": 1097
+              },
+              "id": "_buyAgent",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1090,
+              "end": 1107
+            }
+          ],
+          "modifiers": null,
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "creator",
+                    "start": 1179,
+                    "end": 1186
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "msg",
+                      "start": 1189,
+                      "end": 1192
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "sender",
+                      "start": 1193,
+                      "end": 1199
+                    },
+                    "computed": false,
+                    "start": 1189,
+                    "end": 1199
+                  },
+                  "start": 1179,
+                  "end": 1199
+                },
+                "start": 1179,
+                "end": 1200
+              }
+            ],
+            "start": 1114,
+            "end": 1204
+          },
+          "is_abstract": false,
+          "start": 1000,
+          "end": 1204
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "setInvestAgent",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 1271,
+                "end": 1278
+              },
+              "id": "newInvestAgent",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1271,
+              "end": 1293
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "onlyBy",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "creator",
+                  "start": 1306,
+                  "end": 1313
+                }
+              ],
+              "start": 1299,
+              "end": 1314
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "investAgent",
+                    "start": 1323,
+                    "end": 1334
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "newInvestAgent",
+                    "start": 1337,
+                    "end": 1351
+                  },
+                  "start": 1323,
+                  "end": 1351
+                },
+                "start": 1323,
+                "end": 1352
+              }
+            ],
+            "start": 1317,
+            "end": 1356
+          },
+          "is_abstract": false,
+          "start": 1247,
+          "end": 1356
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "setBuyAgent",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 1417,
+                "end": 1424
+              },
+              "id": "newBuyAgent",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1417,
+              "end": 1436
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "onlyBy",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "creator",
+                  "start": 1449,
+                  "end": 1456
+                }
+              ],
+              "start": 1442,
+              "end": 1457
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "buyAgent",
+                    "start": 1466,
+                    "end": 1474
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "newBuyAgent",
+                    "start": 1477,
+                    "end": 1488
+                  },
+                  "start": 1466,
+                  "end": 1488
+                },
+                "start": 1466,
+                "end": 1489
+              }
+            ],
+            "start": 1460,
+            "end": 1493
+          },
+          "is_abstract": false,
+          "start": 1396,
+          "end": 1493
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "setMinimumInvestment",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 1572,
+                "end": 1576
+              },
+              "id": "newMinimumInvestment",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1572,
+              "end": 1597
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "onlyBy",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "creator",
+                  "start": 1610,
+                  "end": 1617
+                }
+              ],
+              "start": 1603,
+              "end": 1618
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "minimumInvestment",
+                    "start": 1683,
+                    "end": 1700
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "newMinimumInvestment",
+                    "start": 1703,
+                    "end": 1723
+                  },
+                  "start": 1683,
+                  "end": 1723
+                },
+                "start": 1683,
+                "end": 1724
+              }
+            ],
+            "start": 1621,
+            "end": 1728
+          },
+          "is_abstract": false,
+          "start": 1542,
+          "end": 1728
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "createInvestment",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint8",
+                "members": [],
+                "array_parts": [
+                  null
+                ],
+                "start": 1787,
+                "end": 1794
+              },
+              "id": "sectorList",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 1787,
+              "end": 1805
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "payable",
+              "params": [],
+              "start": 1807,
+              "end": 1815
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "msg",
+                      "start": 1825,
+                      "end": 1828
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "value",
+                      "start": 1829,
+                      "end": 1834
+                    },
+                    "computed": false,
+                    "start": 1825,
+                    "end": 1834
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "minimumInvestment",
+                    "start": 1837,
+                    "end": 1854
+                  },
+                  "start": 1825,
+                  "end": 1854
+                },
+                "consequent": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ThrowStatement",
+                      "start": 1864,
+                      "end": 1870
+                    }
+                  ],
+                  "start": 1856,
+                  "end": 1876
+                },
+                "alternate": null,
+                "start": 1821,
+                "end": 1876
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "investments",
+                      "start": 1939,
+                      "end": 1950
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "push",
+                      "start": 1951,
+                      "end": 1955
+                    },
+                    "computed": false,
+                    "start": 1939,
+                    "end": 1955
+                  },
+                  "arguments": [
+                    {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "Investment",
+                        "start": 1956,
+                        "end": 1966
+                      },
+                      "arguments": [
+                        {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "msg",
+                            "start": 1967,
+                            "end": 1970
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "sender",
+                            "start": 1971,
+                            "end": 1977
+                          },
+                          "computed": false,
+                          "start": 1967,
+                          "end": 1977
+                        },
+                        {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "msg",
+                            "start": 1979,
+                            "end": 1982
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "value",
+                            "start": 1983,
+                            "end": 1988
+                          },
+                          "computed": false,
+                          "start": 1979,
+                          "end": 1988
+                        },
+                        {
+                          "type": "Literal",
+                          "value": 0,
+                          "start": 1990,
+                          "end": 1991
+                        },
+                        {
+                          "type": "Literal",
+                          "value": 3,
+                          "start": 1993,
+                          "end": 1994
+                        },
+                        {
+                          "type": "Literal",
+                          "value": 1,
+                          "start": 1996,
+                          "end": 1997
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "sectorList",
+                          "start": 1999,
+                          "end": 2009
+                        }
+                      ],
+                      "start": 1956,
+                      "end": 2010
+                    }
+                  ],
+                  "start": 1939,
+                  "end": 2011
+                },
+                "start": 1939,
+                "end": 2012
+              },
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 2022,
+                      "end": 2026
+                    },
+                    "storage_location": null,
+                    "start": 2022,
+                    "end": 2028
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 2031,
+                    "end": 2032
+                  },
+                  "start": 2022,
+                  "end": 2032
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 2034,
+                    "end": 2035
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "sectorList",
+                      "start": 2038,
+                      "end": 2048
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "start": 2049,
+                      "end": 2055
+                    },
+                    "computed": false,
+                    "start": 2038,
+                    "end": 2055
+                  },
+                  "start": 2034,
+                  "end": 2055
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 2057,
+                    "end": 2058
+                  },
+                  "prefix": false,
+                  "start": 2057,
+                  "end": 2060
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "blackList",
+                            "start": 2072,
+                            "end": 2081
+                          },
+                          "property": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "sectorList",
+                              "start": 2082,
+                              "end": 2092
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "x",
+                              "start": 2093,
+                              "end": 2094
+                            },
+                            "computed": true,
+                            "start": 2082,
+                            "end": 2095
+                          },
+                          "computed": true,
+                          "start": 2072,
+                          "end": 2096
+                        },
+                        "right": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "sectorList",
+                            "start": 2099,
+                            "end": 2109
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "x",
+                            "start": 2110,
+                            "end": 2111
+                          },
+                          "computed": true,
+                          "start": 2099,
+                          "end": 2112
+                        },
+                        "start": 2072,
+                        "end": 2112
+                      },
+                      "start": 2072,
+                      "end": 2113
+                    }
+                  ],
+                  "start": 2062,
+                  "end": 2119
+                },
+                "start": 2018,
+                "end": 2119
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "NewInvestmentByUser",
+                    "start": 2146,
+                    "end": 2165
+                  },
+                  "arguments": [
+                    {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 2166,
+                        "end": 2169
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 2170,
+                        "end": 2176
+                      },
+                      "computed": false,
+                      "start": 2166,
+                      "end": 2176
+                    },
+                    {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 2178,
+                        "end": 2181
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "value",
+                        "start": 2182,
+                        "end": 2187
+                      },
+                      "computed": false,
+                      "start": 2178,
+                      "end": 2187
+                    }
+                  ],
+                  "start": 2146,
+                  "end": 2188
+                },
+                "start": 2146,
+                "end": 2189
+              }
+            ],
+            "start": 1815,
+            "end": 2193
+          },
+          "is_abstract": false,
+          "start": 1761,
+          "end": 2193
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "investOffer",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 2259,
+                "end": 2263
+              },
+              "id": "amount",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 2259,
+              "end": 2270
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint8",
+                "members": [],
+                "array_parts": [
+                  null
+                ],
+                "start": 2272,
+                "end": 2279
+              },
+              "id": "sectorList",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 2272,
+              "end": 2290
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "onlyBy",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "investAgent",
+                  "start": 2303,
+                  "end": 2314
+                }
+              ],
+              "start": 2296,
+              "end": 2315
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "ThisExpression",
+                      "start": 2328,
+                      "end": 2332
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "balance",
+                      "start": 2333,
+                      "end": 2340
+                    },
+                    "computed": false,
+                    "start": 2328,
+                    "end": 2340
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "amount",
+                    "start": 2343,
+                    "end": 2349
+                  },
+                  "start": 2328,
+                  "end": 2349
+                },
+                "consequent": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ThrowStatement",
+                      "start": 2359,
+                      "end": 2365
+                    }
+                  ],
+                  "start": 2351,
+                  "end": 2371
+                },
+                "alternate": null,
+                "start": 2324,
+                "end": 2371
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "criteria",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "bool",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 2415,
+                      "end": 2419
+                    },
+                    "storage_location": null,
+                    "start": 2415,
+                    "end": 2428
+                  },
+                  "right": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "Identifier",
+                      "name": "blackListSectorExists",
+                      "start": 2431,
+                      "end": 2452
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "name": "sectorList",
+                        "start": 2453,
+                        "end": 2463
+                      }
+                    ],
+                    "start": 2431,
+                    "end": 2464
+                  },
+                  "start": 2415,
+                  "end": 2464
+                },
+                "start": 2415,
+                "end": 2465
+              },
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "UnaryExpression",
+                  "operator": "!",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "criteria",
+                    "start": 2476,
+                    "end": 2484
+                  },
+                  "prefix": true,
+                  "start": 2475,
+                  "end": 2484
+                },
+                "consequent": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "+=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "pendingWithdrawals",
+                            "start": 2494,
+                            "end": 2512
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "buyAgent",
+                            "start": 2513,
+                            "end": 2521
+                          },
+                          "computed": true,
+                          "start": 2494,
+                          "end": 2522
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "amount",
+                          "start": 2526,
+                          "end": 2532
+                        },
+                        "start": 2494,
+                        "end": 2532
+                      },
+                      "start": 2494,
+                      "end": 2533
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "Identifier",
+                          "name": "originalInvestment",
+                          "start": 2540,
+                          "end": 2558
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "amount",
+                          "start": 2561,
+                          "end": 2567
+                        },
+                        "start": 2540,
+                        "end": 2567
+                      },
+                      "start": 2540,
+                      "end": 2568
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Identifier",
+                          "name": "InvestmentOfferByBot",
+                          "start": 2575,
+                          "end": 2595
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "amount",
+                            "start": 2596,
+                            "end": 2602
+                          }
+                        ],
+                        "start": 2575,
+                        "end": 2603
+                      },
+                      "start": 2575,
+                      "end": 2604
+                    }
+                  ],
+                  "start": 2486,
+                  "end": 2624
+                },
+                "alternate": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ThrowStatement",
+                      "start": 2638,
+                      "end": 2644
+                    }
+                  ],
+                  "start": 2630,
+                  "end": 2650
+                },
+                "start": 2471,
+                "end": 2650
+              }
+            ],
+            "start": 2318,
+            "end": 2654
+          },
+          "is_abstract": false,
+          "start": 2238,
+          "end": 2654
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "withdrawBuyAgent",
+          "params": null,
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "onlyBy",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "buyAgent",
+                  "start": 2693,
+                  "end": 2701
+                }
+              ],
+              "start": 2686,
+              "end": 2702
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "bool",
+                  "start": 2716,
+                  "end": 2720
+                }
+              ],
+              "start": 2707,
+              "end": 2721
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "amount",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 2734,
+                      "end": 2738
+                    },
+                    "storage_location": null,
+                    "start": 2734,
+                    "end": 2745
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "pendingWithdrawals",
+                      "start": 2748,
+                      "end": 2766
+                    },
+                    "property": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 2767,
+                        "end": 2770
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 2771,
+                        "end": 2777
+                      },
+                      "computed": false,
+                      "start": 2767,
+                      "end": 2777
+                    },
+                    "computed": true,
+                    "start": 2748,
+                    "end": 2778
+                  },
+                  "start": 2734,
+                  "end": 2778
+                },
+                "start": 2734,
+                "end": 2779
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "pendingWithdrawals",
+                      "start": 2789,
+                      "end": 2807
+                    },
+                    "property": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 2808,
+                        "end": 2811
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 2812,
+                        "end": 2818
+                      },
+                      "computed": false,
+                      "start": 2808,
+                      "end": 2818
+                    },
+                    "computed": true,
+                    "start": 2789,
+                    "end": 2819
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 2822,
+                    "end": 2823
+                  },
+                  "start": 2789,
+                  "end": 2823
+                },
+                "start": 2789,
+                "end": 2824
+              },
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 2837,
+                        "end": 2840
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 2841,
+                        "end": 2847
+                      },
+                      "computed": false,
+                      "start": 2837,
+                      "end": 2852
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "send",
+                      "start": 2848,
+                      "end": 2852
+                    },
+                    "computed": false,
+                    "start": 2837,
+                    "end": 2852
+                  },
+                  "arguments": [
+                    {
+                      "type": "Identifier",
+                      "name": "amount",
+                      "start": 2853,
+                      "end": 2859
+                    }
+                  ],
+                  "start": 2837,
+                  "end": 2860
+                },
+                "consequent": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": true,
+                        "start": 2883,
+                        "end": 2887
+                      },
+                      "start": 2876,
+                      "end": 2888
+                    }
+                  ],
+                  "start": 2862,
+                  "end": 2898
+                },
+                "alternate": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "pendingWithdrawals",
+                            "start": 2918,
+                            "end": 2936
+                          },
+                          "property": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "msg",
+                              "start": 2937,
+                              "end": 2940
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "sender",
+                              "start": 2941,
+                              "end": 2947
+                            },
+                            "computed": false,
+                            "start": 2937,
+                            "end": 2947
+                          },
+                          "computed": true,
+                          "start": 2918,
+                          "end": 2948
+                        },
+                        "right": {
+                          "type": "Identifier",
+                          "name": "amount",
+                          "start": 2951,
+                          "end": 2957
+                        },
+                        "start": 2918,
+                        "end": 2957
+                      },
+                      "start": 2918,
+                      "end": 2958
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Literal",
+                        "value": false,
+                        "start": 2978,
+                        "end": 2983
+                      },
+                      "start": 2971,
+                      "end": 2984
+                    }
+                  ],
+                  "start": 2904,
+                  "end": 2994
+                },
+                "start": 2833,
+                "end": 2994
+              }
+            ],
+            "start": 2724,
+            "end": 2998
+          },
+          "is_abstract": false,
+          "start": 2658,
+          "end": 2998
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "sendBuyAgent",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "int",
+                "members": [],
+                "array_parts": [],
+                "start": 3024,
+                "end": 3027
+              },
+              "id": "_returnRatio",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 3024,
+              "end": 3040
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "int",
+                "members": [],
+                "array_parts": [],
+                "start": 3042,
+                "end": 3045
+              },
+              "id": "_sharpe",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 3042,
+              "end": 3053
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "int",
+                "members": [],
+                "array_parts": [],
+                "start": 3055,
+                "end": 3058
+              },
+              "id": "_alpha",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 3055,
+              "end": 3065
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "int",
+                "members": [],
+                "array_parts": [],
+                "start": 3067,
+                "end": 3070
+              },
+              "id": "_beta",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 3067,
+              "end": 3076
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "payable",
+              "params": [],
+              "start": 3078,
+              "end": 3090
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "onlyBy",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "buyAgent",
+                  "start": 3097,
+                  "end": 3105
+                }
+              ],
+              "start": 3090,
+              "end": 3106
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "returnRatio",
+                    "start": 3168,
+                    "end": 3179
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "_returnRatio",
+                    "start": 3182,
+                    "end": 3194
+                  },
+                  "start": 3168,
+                  "end": 3194
+                },
+                "start": 3168,
+                "end": 3195
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "sharpe",
+                    "start": 3200,
+                    "end": 3206
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "_sharpe",
+                    "start": 3209,
+                    "end": 3216
+                  },
+                  "start": 3200,
+                  "end": 3216
+                },
+                "start": 3200,
+                "end": 3217
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "alpha",
+                    "start": 3222,
+                    "end": 3227
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "_alpha",
+                    "start": 3230,
+                    "end": 3236
+                  },
+                  "start": 3222,
+                  "end": 3236
+                },
+                "start": 3222,
+                "end": 3237
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "beta",
+                    "start": 3242,
+                    "end": 3246
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "_beta",
+                    "start": 3249,
+                    "end": 3254
+                  },
+                  "start": 3242,
+                  "end": 3254
+                },
+                "start": 3242,
+                "end": 3255
+              },
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 3325,
+                      "end": 3329
+                    },
+                    "storage_location": null,
+                    "start": 3325,
+                    "end": 3331
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 3334,
+                    "end": 3335
+                  },
+                  "start": 3325,
+                  "end": 3335
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 3337,
+                    "end": 3338
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "investments",
+                      "start": 3341,
+                      "end": 3352
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "start": 3353,
+                      "end": 3359
+                    },
+                    "computed": false,
+                    "start": 3341,
+                    "end": 3359
+                  },
+                  "start": 3337,
+                  "end": 3359
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 3361,
+                    "end": 3362
+                  },
+                  "prefix": false,
+                  "start": 3361,
+                  "end": 3364
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "investments",
+                              "start": 3374,
+                              "end": 3385
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "x",
+                              "start": 3386,
+                              "end": 3387
+                            },
+                            "computed": true,
+                            "start": 3374,
+                            "end": 3399
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "withdrawal",
+                            "start": 3389,
+                            "end": 3399
+                          },
+                          "computed": false,
+                          "start": 3374,
+                          "end": 3399
+                        },
+                        "right": {
+                          "type": "BinaryExpression",
+                          "operator": "*",
+                          "left": {
+                            "type": "BinaryExpression",
+                            "operator": "/",
+                            "left": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "investments",
+                                  "start": 3402,
+                                  "end": 3413
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "x",
+                                  "start": 3414,
+                                  "end": 3415
+                                },
+                                "computed": true,
+                                "start": 3402,
+                                "end": 3422
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "value",
+                                "start": 3417,
+                                "end": 3422
+                              },
+                              "computed": false,
+                              "start": 3402,
+                              "end": 3422
+                            },
+                            "right": {
+                              "type": "Identifier",
+                              "name": "originalInvestment",
+                              "start": 3425,
+                              "end": 3443
+                            },
+                            "start": 3402,
+                            "end": 3455
+                          },
+                          "right": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "msg",
+                              "start": 3446,
+                              "end": 3449
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "value",
+                              "start": 3450,
+                              "end": 3455
+                            },
+                            "computed": false,
+                            "start": 3446,
+                            "end": 3455
+                          },
+                          "start": 3402,
+                          "end": 3455
+                        },
+                        "start": 3374,
+                        "end": 3455
+                      },
+                      "start": 3374,
+                      "end": 3456
+                    },
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "investments",
+                              "start": 3491,
+                              "end": 3502
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "x",
+                              "start": 3503,
+                              "end": 3504
+                            },
+                            "computed": true,
+                            "start": 3491,
+                            "end": 3511
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "value",
+                            "start": 3506,
+                            "end": 3511
+                          },
+                          "computed": false,
+                          "start": 3491,
+                          "end": 3511
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 0,
+                          "start": 3514,
+                          "end": 3515
+                        },
+                        "start": 3491,
+                        "end": 3515
+                      },
+                      "start": 3491,
+                      "end": 3516
+                    }
+                  ],
+                  "start": 3366,
+                  "end": 3522
+                },
+                "start": 3321,
+                "end": 3522
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "clearBlacklistMapping",
+                    "start": 3528,
+                    "end": 3549
+                  },
+                  "arguments": [],
+                  "start": 3528,
+                  "end": 3551
+                },
+                "start": 3528,
+                "end": 3552
+              }
+            ],
+            "start": 3109,
+            "end": 3556
+          },
+          "is_abstract": false,
+          "start": 3002,
+          "end": 3556
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "clearBlacklistMapping",
+          "params": null,
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "internal",
+              "params": [],
+              "start": 3593,
+              "end": 3602
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "constant",
+              "params": [],
+              "start": 3602,
+              "end": 3613
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint8",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 3623,
+                      "end": 3628
+                    },
+                    "storage_location": null,
+                    "start": 3623,
+                    "end": 3630
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 3633,
+                    "end": 3634
+                  },
+                  "start": 3623,
+                  "end": 3634
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 3636,
+                    "end": 3637
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 48,
+                    "start": 3640,
+                    "end": 3642
+                  },
+                  "start": 3636,
+                  "end": 3642
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 3644,
+                    "end": 3645
+                  },
+                  "prefix": false,
+                  "start": 3644,
+                  "end": 3647
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "blackList",
+                            "start": 3657,
+                            "end": 3666
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "x",
+                            "start": 3667,
+                            "end": 3668
+                          },
+                          "computed": true,
+                          "start": 3657,
+                          "end": 3669
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 0,
+                          "start": 3672,
+                          "end": 3673
+                        },
+                        "start": 3657,
+                        "end": 3673
+                      },
+                      "start": 3657,
+                      "end": 3674
+                    }
+                  ],
+                  "start": 3649,
+                  "end": 3680
+                },
+                "start": 3619,
+                "end": 3680
+              }
+            ],
+            "start": 3613,
+            "end": 3684
+          },
+          "is_abstract": false,
+          "start": 3560,
+          "end": 3684
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "blackListSectorExists",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint8",
+                "members": [],
+                "array_parts": [
+                  null
+                ],
+                "start": 3719,
+                "end": 3726
+              },
+              "id": "sectors",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 3719,
+              "end": 3734
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "internal",
+              "params": [],
+              "start": 3736,
+              "end": 3745
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "constant",
+              "params": [],
+              "start": 3745,
+              "end": 3754
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "bool",
+                  "start": 3763,
+                  "end": 3767
+                }
+              ],
+              "start": 3754,
+              "end": 3768
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 3781,
+                      "end": 3785
+                    },
+                    "storage_location": null,
+                    "start": 3781,
+                    "end": 3787
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 3790,
+                    "end": 3791
+                  },
+                  "start": 3781,
+                  "end": 3791
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 3793,
+                    "end": 3794
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "sectors",
+                      "start": 3797,
+                      "end": 3804
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "start": 3805,
+                      "end": 3811
+                    },
+                    "computed": false,
+                    "start": 3797,
+                    "end": 3811
+                  },
+                  "start": 3793,
+                  "end": 3811
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 3813,
+                    "end": 3814
+                  },
+                  "prefix": false,
+                  "start": 3813,
+                  "end": 3816
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "||",
+                        "left": {
+                          "type": "BinaryExpression",
+                          "operator": "!=",
+                          "left": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "blackList",
+                              "start": 3829,
+                              "end": 3838
+                            },
+                            "property": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "sectors",
+                                "start": 3839,
+                                "end": 3846
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "x",
+                                "start": 3847,
+                                "end": 3848
+                              },
+                              "computed": true,
+                              "start": 3839,
+                              "end": 3849
+                            },
+                            "computed": true,
+                            "start": 3829,
+                            "end": 3850
+                          },
+                          "right": {
+                            "type": "CallExpression",
+                            "callee": {
+                              "type": "Identifier",
+                              "name": "address",
+                              "start": 3854,
+                              "end": 3861
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "value": "0x0",
+                                "start": 3862,
+                                "end": 3865
+                              }
+                            ],
+                            "start": 3854,
+                            "end": 3866
+                          },
+                          "start": 3829,
+                          "end": 3866
+                        },
+                        "right": {
+                          "type": "BinaryExpression",
+                          "operator": "!=",
+                          "left": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "blackList",
+                              "start": 3870,
+                              "end": 3879
+                            },
+                            "property": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "sectors",
+                                "start": 3880,
+                                "end": 3887
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "x",
+                                "start": 3888,
+                                "end": 3889
+                              },
+                              "computed": true,
+                              "start": 3880,
+                              "end": 3890
+                            },
+                            "computed": true,
+                            "start": 3870,
+                            "end": 3891
+                          },
+                          "right": {
+                            "type": "Literal",
+                            "value": 0,
+                            "start": 3895,
+                            "end": 3896
+                          },
+                          "start": 3870,
+                          "end": 3896
+                        },
+                        "start": 3829,
+                        "end": 3896
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ReturnStatement",
+                            "argument": {
+                              "type": "Literal",
+                              "value": true,
+                              "start": 3917,
+                              "end": 3921
+                            },
+                            "start": 3910,
+                            "end": 3922
+                          }
+                        ],
+                        "start": 3898,
+                        "end": 3930
+                      },
+                      "alternate": null,
+                      "start": 3826,
+                      "end": 3930
+                    }
+                  ],
+                  "start": 3818,
+                  "end": 3936
+                },
+                "start": 3777,
+                "end": 3936
+              },
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "Literal",
+                  "value": false,
+                  "start": 3949,
+                  "end": 3954
+                },
+                "start": 3942,
+                "end": 3955
+              }
+            ],
+            "start": 3771,
+            "end": 3959
+          },
+          "is_abstract": false,
+          "start": 3688,
+          "end": 3959
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "blackListCompanies",
+          "params": null,
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "constant",
+              "params": [],
+              "start": 3993,
+              "end": 4002
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "Identifier",
+                    "name": "uint8",
+                    "start": 4011,
+                    "end": 4016
+                  },
+                  "property": {
+                    "type": "Literal",
+                    "value": 48,
+                    "start": 4017,
+                    "end": 4019
+                  },
+                  "computed": true,
+                  "start": 4011,
+                  "end": 4020
+                }
+              ],
+              "start": 4002,
+              "end": 4021
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "DeclarativeExpression",
+                  "name": "arr",
+                  "literal": {
+                    "type": "Type",
+                    "literal": "uint8",
+                    "members": [],
+                    "array_parts": [
+                      48
+                    ],
+                    "start": 4030,
+                    "end": 4039
+                  },
+                  "storage_location": null,
+                  "start": 4030,
+                  "end": 4043
+                },
+                "start": 4030,
+                "end": 4044
+              },
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 4053,
+                      "end": 4057
+                    },
+                    "storage_location": null,
+                    "start": 4053,
+                    "end": 4059
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 4062,
+                    "end": 4063
+                  },
+                  "start": 4053,
+                  "end": 4063
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 4065,
+                    "end": 4066
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "investments",
+                      "start": 4069,
+                      "end": 4080
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "start": 4081,
+                      "end": 4087
+                    },
+                    "computed": false,
+                    "start": 4069,
+                    "end": 4087
+                  },
+                  "start": 4065,
+                  "end": 4087
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 4089,
+                    "end": 4090
+                  },
+                  "prefix": false,
+                  "start": 4089,
+                  "end": 4092
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ForStatement",
+                      "init": {
+                        "type": "AssignmentExpression",
+                        "operator": "=",
+                        "left": {
+                          "type": "DeclarativeExpression",
+                          "name": "y",
+                          "literal": {
+                            "type": "Type",
+                            "literal": "uint",
+                            "members": [],
+                            "array_parts": [],
+                            "start": 4108,
+                            "end": 4112
+                          },
+                          "storage_location": null,
+                          "start": 4108,
+                          "end": 4114
+                        },
+                        "right": {
+                          "type": "Literal",
+                          "value": 0,
+                          "start": 4117,
+                          "end": 4118
+                        },
+                        "start": 4108,
+                        "end": 4118
+                      },
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "<",
+                        "left": {
+                          "type": "Identifier",
+                          "name": "y",
+                          "start": 4120,
+                          "end": 4121
+                        },
+                        "right": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "MemberExpression",
+                              "object": {
+                                "type": "Identifier",
+                                "name": "investments",
+                                "start": 4124,
+                                "end": 4135
+                              },
+                              "property": {
+                                "type": "Identifier",
+                                "name": "x",
+                                "start": 4136,
+                                "end": 4137
+                              },
+                              "computed": true,
+                              "start": 4124,
+                              "end": 4153
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "sectors",
+                              "start": 4139,
+                              "end": 4146
+                            },
+                            "computed": false,
+                            "start": 4124,
+                            "end": 4153
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "length",
+                            "start": 4147,
+                            "end": 4153
+                          },
+                          "computed": false,
+                          "start": 4124,
+                          "end": 4153
+                        },
+                        "start": 4120,
+                        "end": 4153
+                      },
+                      "update": {
+                        "type": "UpdateExpression",
+                        "operator": "++",
+                        "argument": {
+                          "type": "Identifier",
+                          "name": "y",
+                          "start": 4155,
+                          "end": 4156
+                        },
+                        "prefix": false,
+                        "start": 4155,
+                        "end": 4158
+                      },
+                      "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "AssignmentExpression",
+                              "operator": "=",
+                              "left": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "Identifier",
+                                  "name": "arr",
+                                  "start": 4174,
+                                  "end": 4177
+                                },
+                                "property": {
+                                  "type": "BinaryExpression",
+                                  "operator": "-",
+                                  "left": {
+                                    "type": "MemberExpression",
+                                    "object": {
+                                      "type": "MemberExpression",
+                                      "object": {
+                                        "type": "MemberExpression",
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "investments",
+                                          "start": 4178,
+                                          "end": 4189
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "x",
+                                          "start": 4190,
+                                          "end": 4191
+                                        },
+                                        "computed": true,
+                                        "start": 4178,
+                                        "end": 4203
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "sectors",
+                                        "start": 4193,
+                                        "end": 4200
+                                      },
+                                      "computed": false,
+                                      "start": 4178,
+                                      "end": 4203
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "y",
+                                      "start": 4201,
+                                      "end": 4202
+                                    },
+                                    "computed": true,
+                                    "start": 4178,
+                                    "end": 4203
+                                  },
+                                  "right": {
+                                    "type": "Literal",
+                                    "value": 1,
+                                    "start": 4206,
+                                    "end": 4207
+                                  },
+                                  "start": 4178,
+                                  "end": 4207
+                                },
+                                "computed": true,
+                                "start": 4174,
+                                "end": 4208
+                              },
+                              "right": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "MemberExpression",
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "investments",
+                                      "start": 4211,
+                                      "end": 4222
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "x",
+                                      "start": 4223,
+                                      "end": 4224
+                                    },
+                                    "computed": true,
+                                    "start": 4211,
+                                    "end": 4236
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "sectors",
+                                    "start": 4226,
+                                    "end": 4233
+                                  },
+                                  "computed": false,
+                                  "start": 4211,
+                                  "end": 4236
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "y",
+                                  "start": 4234,
+                                  "end": 4235
+                                },
+                                "computed": true,
+                                "start": 4211,
+                                "end": 4236
+                              },
+                              "start": 4174,
+                              "end": 4236
+                            },
+                            "start": 4174,
+                            "end": 4237
+                          }
+                        ],
+                        "start": 4160,
+                        "end": 4247
+                      },
+                      "start": 4104,
+                      "end": 4247
+                    }
+                  ],
+                  "start": 4094,
+                  "end": 4253
+                },
+                "start": 4049,
+                "end": 4253
+              },
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "Identifier",
+                  "name": "arr",
+                  "start": 4266,
+                  "end": 4269
+                },
+                "start": 4259,
+                "end": 4270
+              }
+            ],
+            "start": 4024,
+            "end": 4274
+          },
+          "is_abstract": false,
+          "start": 3963,
+          "end": 4274
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "availableForInvestment",
+          "params": null,
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "constant",
+              "params": [],
+              "start": 4312,
+              "end": 4321
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "uint",
+                  "start": 4330,
+                  "end": 4334
+                }
+              ],
+              "start": 4321,
+              "end": 4335
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "DeclarativeExpression",
+                  "name": "availableForInvestment",
+                  "literal": {
+                    "type": "Type",
+                    "literal": "uint",
+                    "members": [],
+                    "array_parts": [],
+                    "start": 4344,
+                    "end": 4348
+                  },
+                  "storage_location": null,
+                  "start": 4344,
+                  "end": 4371
+                },
+                "start": 4344,
+                "end": 4372
+              },
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 4382,
+                      "end": 4386
+                    },
+                    "storage_location": null,
+                    "start": 4382,
+                    "end": 4388
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 4391,
+                    "end": 4392
+                  },
+                  "start": 4382,
+                  "end": 4392
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 4394,
+                    "end": 4395
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "investments",
+                      "start": 4398,
+                      "end": 4409
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "start": 4410,
+                      "end": 4416
+                    },
+                    "computed": false,
+                    "start": 4398,
+                    "end": 4416
+                  },
+                  "start": 4394,
+                  "end": 4416
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 4418,
+                    "end": 4419
+                  },
+                  "prefix": false,
+                  "start": 4418,
+                  "end": 4421
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "AssignmentExpression",
+                        "operator": "+=",
+                        "left": {
+                          "type": "Identifier",
+                          "name": "availableForInvestment",
+                          "start": 4431,
+                          "end": 4453
+                        },
+                        "right": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "investments",
+                              "start": 4457,
+                              "end": 4468
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "x",
+                              "start": 4469,
+                              "end": 4470
+                            },
+                            "computed": true,
+                            "start": 4457,
+                            "end": 4477
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "value",
+                            "start": 4472,
+                            "end": 4477
+                          },
+                          "computed": false,
+                          "start": 4457,
+                          "end": 4477
+                        },
+                        "start": 4431,
+                        "end": 4477
+                      },
+                      "start": 4431,
+                      "end": 4478
+                    }
+                  ],
+                  "start": 4423,
+                  "end": 4484
+                },
+                "start": 4378,
+                "end": 4484
+              },
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "Identifier",
+                  "name": "availableForInvestment",
+                  "start": 4497,
+                  "end": 4519
+                },
+                "start": 4490,
+                "end": 4520
+              }
+            ],
+            "start": 4338,
+            "end": 4524
+          },
+          "is_abstract": false,
+          "start": 4278,
+          "end": 4524
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "withdrawalUser",
+          "params": null,
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "public",
+              "params": [],
+              "start": 4578,
+              "end": 4585
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "bool",
+                  "start": 4594,
+                  "end": 4598
+                }
+              ],
+              "start": 4585,
+              "end": 4599
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ForStatement",
+                "init": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "DeclarativeExpression",
+                    "name": "x",
+                    "literal": {
+                      "type": "Type",
+                      "literal": "uint",
+                      "members": [],
+                      "array_parts": [],
+                      "start": 4612,
+                      "end": 4616
+                    },
+                    "storage_location": null,
+                    "start": 4612,
+                    "end": 4618
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 0,
+                    "start": 4621,
+                    "end": 4622
+                  },
+                  "start": 4612,
+                  "end": 4622
+                },
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 4624,
+                    "end": 4625
+                  },
+                  "right": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "investments",
+                      "start": 4628,
+                      "end": 4639
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "length",
+                      "start": 4640,
+                      "end": 4646
+                    },
+                    "computed": false,
+                    "start": 4628,
+                    "end": 4646
+                  },
+                  "start": 4624,
+                  "end": 4646
+                },
+                "update": {
+                  "type": "UpdateExpression",
+                  "operator": "++",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "x",
+                    "start": 4648,
+                    "end": 4649
+                  },
+                  "prefix": false,
+                  "start": 4648,
+                  "end": 4651
+                },
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "IfStatement",
+                      "test": {
+                        "type": "BinaryExpression",
+                        "operator": "==",
+                        "left": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "Identifier",
+                            "name": "msg",
+                            "start": 4665,
+                            "end": 4668
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "sender",
+                            "start": 4669,
+                            "end": 4675
+                          },
+                          "computed": false,
+                          "start": 4665,
+                          "end": 4675
+                        },
+                        "right": {
+                          "type": "MemberExpression",
+                          "object": {
+                            "type": "MemberExpression",
+                            "object": {
+                              "type": "Identifier",
+                              "name": "investments",
+                              "start": 4679,
+                              "end": 4690
+                            },
+                            "property": {
+                              "type": "Identifier",
+                              "name": "x",
+                              "start": 4691,
+                              "end": 4692
+                            },
+                            "computed": true,
+                            "start": 4679,
+                            "end": 4702
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "name": "investor",
+                            "start": 4694,
+                            "end": 4702
+                          },
+                          "computed": false,
+                          "start": 4679,
+                          "end": 4702
+                        },
+                        "start": 4665,
+                        "end": 4702
+                      },
+                      "consequent": {
+                        "type": "BlockStatement",
+                        "body": [
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "AssignmentExpression",
+                              "operator": "=",
+                              "left": {
+                                "type": "DeclarativeExpression",
+                                "name": "amount",
+                                "literal": {
+                                  "type": "Type",
+                                  "literal": "uint",
+                                  "members": [],
+                                  "array_parts": [],
+                                  "start": 4714,
+                                  "end": 4718
+                                },
+                                "storage_location": null,
+                                "start": 4714,
+                                "end": 4725
+                              },
+                              "right": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "investments",
+                                    "start": 4728,
+                                    "end": 4739
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "x",
+                                    "start": 4740,
+                                    "end": 4741
+                                  },
+                                  "computed": true,
+                                  "start": 4728,
+                                  "end": 4753
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "withdrawal",
+                                  "start": 4743,
+                                  "end": 4753
+                                },
+                                "computed": false,
+                                "start": 4728,
+                                "end": 4753
+                              },
+                              "start": 4714,
+                              "end": 4753
+                            },
+                            "start": 4714,
+                            "end": 4754
+                          },
+                          {
+                            "type": "ExpressionStatement",
+                            "expression": {
+                              "type": "AssignmentExpression",
+                              "operator": "=",
+                              "left": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "investments",
+                                    "start": 4764,
+                                    "end": 4775
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "x",
+                                    "start": 4776,
+                                    "end": 4777
+                                  },
+                                  "computed": true,
+                                  "start": 4764,
+                                  "end": 4789
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "withdrawal",
+                                  "start": 4779,
+                                  "end": 4789
+                                },
+                                "computed": false,
+                                "start": 4764,
+                                "end": 4789
+                              },
+                              "right": {
+                                "type": "Literal",
+                                "value": 0,
+                                "start": 4792,
+                                "end": 4793
+                              },
+                              "start": 4764,
+                              "end": 4793
+                            },
+                            "start": 4764,
+                            "end": 4794
+                          },
+                          {
+                            "type": "IfStatement",
+                            "test": {
+                              "type": "CallExpression",
+                              "callee": {
+                                "type": "MemberExpression",
+                                "object": {
+                                  "type": "MemberExpression",
+                                  "object": {
+                                    "type": "Identifier",
+                                    "name": "msg",
+                                    "start": 4807,
+                                    "end": 4810
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "name": "sender",
+                                    "start": 4811,
+                                    "end": 4817
+                                  },
+                                  "computed": false,
+                                  "start": 4807,
+                                  "end": 4822
+                                },
+                                "property": {
+                                  "type": "Identifier",
+                                  "name": "send",
+                                  "start": 4818,
+                                  "end": 4822
+                                },
+                                "computed": false,
+                                "start": 4807,
+                                "end": 4822
+                              },
+                              "arguments": [
+                                {
+                                  "type": "Identifier",
+                                  "name": "amount",
+                                  "start": 4823,
+                                  "end": 4829
+                                }
+                              ],
+                              "start": 4807,
+                              "end": 4830
+                            },
+                            "consequent": {
+                              "type": "BlockStatement",
+                              "body": [
+                                {
+                                  "type": "ReturnStatement",
+                                  "argument": {
+                                    "type": "Literal",
+                                    "value": true,
+                                    "start": 4853,
+                                    "end": 4857
+                                  },
+                                  "start": 4846,
+                                  "end": 4858
+                                }
+                              ],
+                              "start": 4832,
+                              "end": 4868
+                            },
+                            "alternate": {
+                              "type": "BlockStatement",
+                              "body": [
+                                {
+                                  "type": "ExpressionStatement",
+                                  "expression": {
+                                    "type": "AssignmentExpression",
+                                    "operator": "=",
+                                    "left": {
+                                      "type": "MemberExpression",
+                                      "object": {
+                                        "type": "MemberExpression",
+                                        "object": {
+                                          "type": "Identifier",
+                                          "name": "investments",
+                                          "start": 4888,
+                                          "end": 4899
+                                        },
+                                        "property": {
+                                          "type": "Identifier",
+                                          "name": "x",
+                                          "start": 4900,
+                                          "end": 4901
+                                        },
+                                        "computed": true,
+                                        "start": 4888,
+                                        "end": 4913
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "name": "withdrawal",
+                                        "start": 4903,
+                                        "end": 4913
+                                      },
+                                      "computed": false,
+                                      "start": 4888,
+                                      "end": 4913
+                                    },
+                                    "right": {
+                                      "type": "Identifier",
+                                      "name": "amount",
+                                      "start": 4916,
+                                      "end": 4922
+                                    },
+                                    "start": 4888,
+                                    "end": 4922
+                                  },
+                                  "start": 4888,
+                                  "end": 4923
+                                },
+                                {
+                                  "type": "ReturnStatement",
+                                  "argument": {
+                                    "type": "Literal",
+                                    "value": false,
+                                    "start": 4943,
+                                    "end": 4948
+                                  },
+                                  "start": 4936,
+                                  "end": 4949
+                                }
+                              ],
+                              "start": 4874,
+                              "end": 4959
+                            },
+                            "start": 4803,
+                            "end": 4959
+                          },
+                          {
+                            "type": "BreakStatement",
+                            "label": null,
+                            "start": 4968,
+                            "end": 4974
+                          }
+                        ],
+                        "start": 4704,
+                        "end": 4982
+                      },
+                      "alternate": null,
+                      "start": 4661,
+                      "end": 4982
+                    }
+                  ],
+                  "start": 4653,
+                  "end": 4988
+                },
+                "start": 4608,
+                "end": 4988
+              },
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "Literal",
+                  "value": false,
+                  "start": 5001,
+                  "end": 5006
+                },
+                "start": 4994,
+                "end": 5007
+              }
+            ],
+            "start": 4602,
+            "end": 5011
+          },
+          "is_abstract": false,
+          "start": 4552,
+          "end": 5011
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "kill",
+          "params": null,
+          "modifiers": null,
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "==",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "msg",
+                      "start": 5183,
+                      "end": 5186
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "sender",
+                      "start": 5187,
+                      "end": 5193
+                    },
+                    "computed": false,
+                    "start": 5183,
+                    "end": 5193
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "creator",
+                    "start": 5197,
+                    "end": 5204
+                  },
+                  "start": 5183,
+                  "end": 5204
+                },
+                "consequent": {
+                  "type": "ExpressionStatement",
+                  "expression": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "Identifier",
+                      "name": "suicide",
+                      "start": 5206,
+                      "end": 5213
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "name": "creator",
+                        "start": 5214,
+                        "end": 5221
+                      }
+                    ],
+                    "start": 5206,
+                    "end": 5222
+                  },
+                  "start": 5206,
+                  "end": 5223
+                },
+                "alternate": null,
+                "start": 5179,
+                "end": 5223
+              }
+            ],
+            "start": 5173,
+            "end": 5227
+          },
+          "is_abstract": false,
+          "start": 5157,
+          "end": 5227
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "getInvestmentCurrentValue",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 5373,
+                "end": 5380
+              },
+              "id": "investor",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 5373,
+              "end": 5389
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "constant",
+              "params": [],
+              "start": 5391,
+              "end": 5404
+            },
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "DeclarativeExpression",
+                  "name": "nowValue",
+                  "literal": {
+                    "type": "Type",
+                    "literal": "uint",
+                    "members": [],
+                    "array_parts": [],
+                    "start": 5412,
+                    "end": 5416
+                  },
+                  "storage_location": null,
+                  "start": 5412,
+                  "end": 5425
+                }
+              ],
+              "start": 5404,
+              "end": 5426
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [],
+            "start": 5429,
+            "end": 5484
+          },
+          "is_abstract": false,
+          "start": 5338,
+          "end": 5484
+        }
+      ],
+      "start": 25,
+      "end": 5486
+    }
+  ],
+  "start": 0,
+  "end": 5486
+}

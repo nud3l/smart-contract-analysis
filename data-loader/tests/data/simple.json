@@ -1,0 +1,646 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "PragmaStatement",
+      "start_version": {
+        "type": "VersionLiteral",
+        "operator": "^",
+        "version": "0.4.2"
+      },
+      "end_version": null,
+      "start": 0,
+      "end": 23
+    },
+    {
+      "type": "ImportStatement",
+      "from": "ConvertLib.sol",
+      "symbols": [],
+      "alias": null,
+      "start": 25,
+      "end": 49
+    },
+    {
+      "type": "ContractStatement",
+      "name": "MetaCoin",
+      "is": [],
+      "body": [
+        {
+          "type": "StateVariableDeclaration",
+          "name": "balances",
+          "literal": {
+            "type": "Type",
+            "literal": {
+              "type": "MappingExpression",
+              "from": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 343,
+                "end": 350
+              },
+              "to": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 354,
+                "end": 358
+              },
+              "start": 334,
+              "end": 359
+            },
+            "members": [],
+            "array_parts": [],
+            "start": 334,
+            "end": 359
+          },
+          "visibility": null,
+          "is_constant": false,
+          "value": null,
+          "start": 334,
+          "end": 369
+        },
+        {
+          "type": "EventDeclaration",
+          "name": "Transfer",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 387,
+                "end": 394
+              },
+              "id": "_from",
+              "is_indexed": true,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 387,
+              "end": 408
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 410,
+                "end": 417
+              },
+              "id": "_to",
+              "is_indexed": true,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 410,
+              "end": 429
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint256",
+                "members": [],
+                "array_parts": [],
+                "start": 431,
+                "end": 438
+              },
+              "id": "_value",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 431,
+              "end": 445
+            }
+          ],
+          "is_anonymous": false,
+          "start": 372,
+          "end": 447
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "MetaCoin",
+          "params": null,
+          "modifiers": null,
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "=",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "balances",
+                      "start": 474,
+                      "end": 482
+                    },
+                    "property": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "tx",
+                        "start": 483,
+                        "end": 485
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "origin",
+                        "start": 486,
+                        "end": 492
+                      },
+                      "computed": false,
+                      "start": 483,
+                      "end": 492
+                    },
+                    "computed": true,
+                    "start": 474,
+                    "end": 493
+                  },
+                  "right": {
+                    "type": "Literal",
+                    "value": 10000,
+                    "start": 496,
+                    "end": 501
+                  },
+                  "start": 474,
+                  "end": 501
+                },
+                "start": 474,
+                "end": 502
+              }
+            ],
+            "start": 470,
+            "end": 505
+          },
+          "is_abstract": false,
+          "start": 450,
+          "end": 505
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "sendCoin",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 526,
+                "end": 533
+              },
+              "id": "receiver",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 526,
+              "end": 542
+            },
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "uint",
+                "members": [],
+                "array_parts": [],
+                "start": 544,
+                "end": 548
+              },
+              "id": "amount",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 544,
+              "end": 555
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "DeclarativeExpression",
+                  "name": "sufficient",
+                  "literal": {
+                    "type": "Type",
+                    "literal": "bool",
+                    "members": [],
+                    "array_parts": [],
+                    "start": 565,
+                    "end": 569
+                  },
+                  "storage_location": null,
+                  "start": 565,
+                  "end": 580
+                }
+              ],
+              "start": 557,
+              "end": 581
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "IfStatement",
+                "test": {
+                  "type": "BinaryExpression",
+                  "operator": "<",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "balances",
+                      "start": 590,
+                      "end": 598
+                    },
+                    "property": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 599,
+                        "end": 602
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 603,
+                        "end": 609
+                      },
+                      "computed": false,
+                      "start": 599,
+                      "end": 609
+                    },
+                    "computed": true,
+                    "start": 590,
+                    "end": 610
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "amount",
+                    "start": 613,
+                    "end": 619
+                  },
+                  "start": 590,
+                  "end": 619
+                },
+                "consequent": {
+                  "type": "ReturnStatement",
+                  "argument": {
+                    "type": "Literal",
+                    "value": false,
+                    "start": 628,
+                    "end": 633
+                  },
+                  "start": 621,
+                  "end": 634
+                },
+                "alternate": null,
+                "start": 586,
+                "end": 634
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "-=",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "balances",
+                      "start": 637,
+                      "end": 645
+                    },
+                    "property": {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 646,
+                        "end": 649
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 650,
+                        "end": 656
+                      },
+                      "computed": false,
+                      "start": 646,
+                      "end": 656
+                    },
+                    "computed": true,
+                    "start": 637,
+                    "end": 657
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "amount",
+                    "start": 661,
+                    "end": 667
+                  },
+                  "start": 637,
+                  "end": 667
+                },
+                "start": 637,
+                "end": 668
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "operator": "+=",
+                  "left": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "balances",
+                      "start": 671,
+                      "end": 679
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "receiver",
+                      "start": 680,
+                      "end": 688
+                    },
+                    "computed": true,
+                    "start": 671,
+                    "end": 689
+                  },
+                  "right": {
+                    "type": "Identifier",
+                    "name": "amount",
+                    "start": 693,
+                    "end": 699
+                  },
+                  "start": 671,
+                  "end": 699
+                },
+                "start": 671,
+                "end": 700
+              },
+              {
+                "type": "ExpressionStatement",
+                "expression": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "Identifier",
+                    "name": "Transfer",
+                    "start": 703,
+                    "end": 711
+                  },
+                  "arguments": [
+                    {
+                      "type": "MemberExpression",
+                      "object": {
+                        "type": "Identifier",
+                        "name": "msg",
+                        "start": 712,
+                        "end": 715
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "name": "sender",
+                        "start": 716,
+                        "end": 722
+                      },
+                      "computed": false,
+                      "start": 712,
+                      "end": 722
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "receiver",
+                      "start": 724,
+                      "end": 732
+                    },
+                    {
+                      "type": "Identifier",
+                      "name": "amount",
+                      "start": 734,
+                      "end": 740
+                    }
+                  ],
+                  "start": 703,
+                  "end": 741
+                },
+                "start": 703,
+                "end": 742
+              },
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "Literal",
+                  "value": true,
+                  "start": 752,
+                  "end": 756
+                },
+                "start": 745,
+                "end": 757
+              }
+            ],
+            "start": 582,
+            "end": 760
+          },
+          "is_abstract": false,
+          "start": 508,
+          "end": 760
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "getBalanceInEth",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 788,
+                "end": 795
+              },
+              "id": "addr",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 788,
+              "end": 800
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "uint",
+                  "start": 810,
+                  "end": 814
+                }
+              ],
+              "start": 802,
+              "end": 815
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "CallExpression",
+                  "callee": {
+                    "type": "MemberExpression",
+                    "object": {
+                      "type": "Identifier",
+                      "name": "ConvertLib",
+                      "start": 826,
+                      "end": 836
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "name": "convert",
+                      "start": 837,
+                      "end": 844
+                    },
+                    "computed": false,
+                    "start": 826,
+                    "end": 844
+                  },
+                  "arguments": [
+                    {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "getBalance",
+                        "start": 845,
+                        "end": 855
+                      },
+                      "arguments": [
+                        {
+                          "type": "Identifier",
+                          "name": "addr",
+                          "start": 856,
+                          "end": 860
+                        }
+                      ],
+                      "start": 845,
+                      "end": 861
+                    },
+                    {
+                      "type": "Literal",
+                      "value": 2,
+                      "start": 862,
+                      "end": 863
+                    }
+                  ],
+                  "start": 826,
+                  "end": 864
+                },
+                "start": 819,
+                "end": 865
+              }
+            ],
+            "start": 815,
+            "end": 868
+          },
+          "is_abstract": false,
+          "start": 763,
+          "end": 868
+        },
+        {
+          "type": "FunctionDeclaration",
+          "name": "getBalance",
+          "params": [
+            {
+              "type": "InformalParameter",
+              "literal": {
+                "type": "Type",
+                "literal": "address",
+                "members": [],
+                "array_parts": [],
+                "start": 891,
+                "end": 898
+              },
+              "id": "addr",
+              "is_indexed": false,
+              "is_storage": false,
+              "is_memory": false,
+              "start": 891,
+              "end": 903
+            }
+          ],
+          "modifiers": [
+            {
+              "type": "ModifierArgument",
+              "name": "returns",
+              "params": [
+                {
+                  "type": "Identifier",
+                  "name": "uint",
+                  "start": 913,
+                  "end": 917
+                }
+              ],
+              "start": 905,
+              "end": 918
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "body": [
+              {
+                "type": "ReturnStatement",
+                "argument": {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "Identifier",
+                    "name": "balances",
+                    "start": 930,
+                    "end": 938
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "name": "addr",
+                    "start": 939,
+                    "end": 943
+                  },
+                  "computed": true,
+                  "start": 930,
+                  "end": 944
+                },
+                "start": 923,
+                "end": 945
+              }
+            ],
+            "start": 919,
+            "end": 948
+          },
+          "is_abstract": false,
+          "start": 871,
+          "end": 948
+        }
+      ],
+      "start": 313,
+      "end": 950
+    }
+  ],
+  "start": 0,
+  "end": 950
+}
