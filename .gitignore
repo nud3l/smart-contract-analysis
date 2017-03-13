@@ -40,3 +40,5 @@ data-loader/config/config\.yml
 *.pyc
 
 data-loader/tests/__pycache__/
+
+contract-analysis/
