@@ -1,5 +1,5 @@
 import yaml
-import os
+from pkg_resources import resource_string
 import logging
 from sqlalchemy import create_engine
 from pymongo import MongoClient
@@ -7,8 +7,8 @@ from pymongo import MongoClient
 
 class Config(object):
     def __init__(self):
-        file_path = os.path.dirname(os.path.realpath(__file__))
-        with open("{}/config.yml".format(file_path), 'r') as ymlfile:
+        file_path = resource_string(__name__, 'config.yml')
+        with open(file_path, 'r') as ymlfile:
             config = yaml.load(ymlfile)
 
         # create SQL connection

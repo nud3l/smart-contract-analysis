@@ -42,3 +42,9 @@ data-loader/config/config\.yml
 data-loader/tests/__pycache__/
 
 contract-analysis/
+
+data-loader/\.eggs/
+
+data-loader/build/
+
+data-loader/dist/

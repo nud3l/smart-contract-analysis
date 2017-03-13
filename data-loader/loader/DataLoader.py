@@ -79,7 +79,3 @@ class DataLoader:
             logging.debug("Trying to store code id {}".format(item.id))
             self.store_solidity_code(item)
         logging.info("Finished data loader")
-
-if __name__ == '__main__':
-    data_loader = DataLoader()
-    data_loader.parse_database()
