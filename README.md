@@ -1,7 +1,7 @@
 # Smart contract analysis for Solidity
 This repository automatically analyses solidity contract files for specific characteristics. The intention is to quantify these characteristics to give an overview of the current state of Solidity development.
 
-## Dateset
+## Dataset
 The dataset of solidity contracts used for this analysis is compiled from public GitHub repositories. To receive the data using the GitHub API you may refer to the [github-crawler repository](https://github.com/nud3l/github-search-crawler). This will download Solidity contracts to your system and store their metadata in a SQL DB.
 
 ## Structure of this repository
@@ -13,7 +13,7 @@ To get up and running with the jupyter notebook, make sure to follow the install
 - matplotlib (this will take some time)
 
 ## Characteristics
-Details are in the jupyter notebook. The characteristics include for example: 
+Details are in the jupyter notebook. The characteristics include for example:
 - Metadata
   - Solidity version of the contract
   - Name of the contract
