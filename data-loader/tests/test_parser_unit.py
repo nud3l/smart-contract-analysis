@@ -2,14 +2,15 @@ from context import SolidityParser
 import json
 from os import path
 
+
 class TestParser:
     def test_solidity_parser_no_input(self):
-        Parser = SolidityParser.SolidityParser()
+        parser = SolidityParser.SolidityParser()
         file_path = None
-        assert Parser.parse(file_path) is None
+        assert parser.parse(file_path) is None
 
     def test_solidity_parser_simple_input(self):
-        Parser = SolidityParser.SolidityParser()
+        parser = SolidityParser.SolidityParser()
 
         current_path = path.dirname(path.realpath(__file__))
         file_path = "{}/data/simple.sol".format(current_path)
@@ -17,7 +18,7 @@ class TestParser:
 
         with open(json_path) as data_file:
             stored_contract = json.load(data_file)
-        created_contract = Parser.parse(file_path)
+        created_contract = parser.parse(file_path)
 
         # sort the JSONs to allow for comparison
         stored_contract = json.dumps(stored_contract, sort_keys=True)
@@ -26,7 +27,7 @@ class TestParser:
         assert created_contract == stored_contract
 
     def test_solidity_parser_complex_input(self):
-        Parser = SolidityParser.SolidityParser()
+        parser = SolidityParser.SolidityParser()
 
         current_path = path.dirname(path.realpath(__file__))
         file_path = "{}/data/complex.sol".format(current_path)
@@ -34,7 +35,7 @@ class TestParser:
 
         with open(json_path) as data_file:
             stored_contract = json.load(data_file)
-        created_contract = Parser.parse(file_path)
+        created_contract = parser.parse(file_path)
 
         # sort the JSONs to allow for comparison
         stored_contract = json.dumps(stored_contract, sort_keys=True)
@@ -43,9 +44,9 @@ class TestParser:
         assert created_contract == stored_contract
 
     def test_solidity_parser_invalid_input(self):
-        Parser = SolidityParser.SolidityParser()
+        parser = SolidityParser.SolidityParser()
 
         current_path = path.dirname(path.realpath(__file__))
         file_path = "{}/data/invalid.sol".format(current_path)
-        assert Parser.parse(file_path) is None
+        assert parser.parse(file_path) is None
 

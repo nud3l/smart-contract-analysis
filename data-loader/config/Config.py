@@ -1,6 +1,8 @@
 import yaml
 import os
+import logging
 from sqlalchemy import create_engine
+from pymongo import MongoClient
 
 
 class Config(object):
@@ -9,13 +11,26 @@ class Config(object):
         with open("{}/config.yml".format(file_path), 'r') as ymlfile:
             config = yaml.load(ymlfile)
 
-        self.sql = config['sql']
-
         # create SQL connection
+        sql = config['sql']
         self.engine = create_engine('postgresql://{}:{}@{}:{}/{}'.format(
-                self.sql['user'],
-                self.sql['password'],
-                self.sql['host'],
-                self.sql['port'],
-                self.sql['db']
+                sql['user'],
+                sql['password'],
+                sql['host'],
+                sql['port'],
+                sql['db']
         ))
+
+        # create MongoDB connection
+        mongo = config['mongo']
+        self.client = MongoClient(mongo['host'], int(mongo['port']))
+
+        # setup logging
+        log_file = config['log']['file']
+        logging.basicConfig(
+                filename=log_file,
+                level=logging.INFO,
+                format='%(asctime)s - %(levelname)s - %(message)s',
+                datefmt='%d/%m/%Y %I:%M:%S %p'
+        )
+

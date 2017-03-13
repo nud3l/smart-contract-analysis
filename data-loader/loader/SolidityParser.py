@@ -1,6 +1,7 @@
 import subprocess
 import json
 from os import path
+import logging
 
 
 class SolidityParser:
@@ -16,14 +17,11 @@ class SolidityParser:
                         stdout=subprocess.PIPE,
                         stderr=subprocess.PIPE
                 )
-                # json_raw = subprocess.check_output([self.parser_path, file_path])
                 json_code = json.loads(json_raw.communicate()[0])
 
                 return json_code
 
             except ValueError as e:
-                print "{}: Invalid Solidity code file".format(e)
+                logging.error("{}: Invalid Solidity code file".format(e))
 
         return None
-
-# node_modules/.bin/solidity-parser /home/nud3l/GitHub/Dinvest/solidity/contracts/HedgeContract1.sol
