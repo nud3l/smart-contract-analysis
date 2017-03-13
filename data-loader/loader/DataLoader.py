@@ -37,8 +37,8 @@ class DataLoader:
         code_dict['_id'] = code.id
         code_dict['name'] = code.name
         code_dict['path'] = code.path
-        code_dict['data_added'] = code.data_added
-        code_dict['data_modified'] = code.data_modified
+        code_dict['date_added'] = code.date_added
+        code_dict['date_modified'] = code.date_modified
         code_dict['repository_id'] = repository.id
         code_dict['repository_name'] = repository.name
         code_dict['repository_full_name'] = repository.full_name
@@ -52,21 +52,24 @@ class DataLoader:
         return code_dict
 
     def store_solidity_code(self, code):
-        if not self.code_base.find_one({"_id": code.id}):
-            repository = self.load_repository(code.repository_id)
-            owner = self.load_owner(repository.owner_id)
-            parsed_code = self.parser.parse(code.code)
+        try:
+            if not self.code_base.find_one({"_id": code.id}):
+                repository = self.load_repository(code.repository_id)
+                owner = self.load_owner(repository.owner_id)
+                parsed_code = self.parser.parse(code.code)
 
-            if repository and owner and parsed_code:
-                code_document = self.create_code_document(code, repository, owner, parsed_code)
+                if repository and owner and parsed_code:
+                    code_document = self.create_code_document(code, repository, owner, parsed_code)
+                    self.code_base.insert_one(code_document)
 
-                self.code_base.insert_one(code_document)
+                    logging.info("Code id {} stored in the database".format(code.id))
+                    return
 
-                return
+                logging.info("Code id {} not added to the database".format(code.id))
 
-            logging.info("Code id {} not added to the database".format(code.id))
-
-        logging.info("Code id {} already in MongoDB".format(code.id))
+            logging.info("Code id {} already in MongoDB".format(code.id))
+        except AttributeError as e:
+            logging.error("{}: No code provided".format(e))
 
     def parse_database(self):
         logging.info("Started data loader")
