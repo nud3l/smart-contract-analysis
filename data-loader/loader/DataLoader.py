@@ -70,6 +70,8 @@ class DataLoader:
             logging.info("Code id {} already in MongoDB".format(code.id))
         except AttributeError as e:
             logging.error("{}: No code provided".format(e))
+        except OverflowError as e:
+            logging.error("{}: Failed on code id {}".format(e, code.id))
 
     def parse_database(self):
         logging.info("Started data loader")

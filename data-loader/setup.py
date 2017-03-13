@@ -22,7 +22,7 @@ setup(
         ],
         packages=find_packages(exclude=['contrib', 'docs', 'tests']),
         install_requires=requirements,
-        include_package_data = True,
+        package_data={'': ['*.yml']},
         setup_requires=['pytest-runner'],
         tests_require=['pytest'],
       )
