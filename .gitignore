@@ -48,3 +48,5 @@ data-loader/\.eggs/
 data-loader/build/
 
 data-loader/dist/
+
+analysis/\.ipynb_checkpoints/
