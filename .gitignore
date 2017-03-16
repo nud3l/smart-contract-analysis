@@ -50,3 +50,4 @@ data-loader/build/
 data-loader/dist/
 
 analysis/\.ipynb_checkpoints/
+/venv/

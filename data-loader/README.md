@@ -9,6 +9,20 @@ The contract files are parsed with the [ConsenSys solidity parser](https://githu
 - This installation procedures assumes NVM is installed on your system. If not you can follow the instructions [here](https://github.com/creationix/nvm).
 - From the `data-loader` folder install the solidity parser with `npm install solidity-parser`.
 - Create a Python virtual environment and activate it. If you don't know how, follow the [tutorial](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
+- Create a `config.yml` file in the `config` folder. Paste the following contents:
+```
+sql:
+    host: localhost
+    user: github-crawler
+    password: your-password-here
+    db: smartcontracts
+    port: 5432
+mongo:
+    host: localhost
+    port: 27017
+log:
+    file: log/data-loader.log
+```
 - Build and install the python project from the shell with the activated virtual environment with `python setup.py build` and `python setup.py install`.
 
 ## Execute the loader
