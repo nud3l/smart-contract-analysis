@@ -10,6 +10,10 @@ class Config(object):
         file_path = os.path.dirname(os.path.realpath(__file__))
         with open("{}/config.yml".format(file_path), 'r') as ymlfile:
             config = yaml.load(ymlfile)
+	
+	# create a log directory
+        if not os.path.exists("log"):
+            os.makedirs("log")
 
         # create SQL connection
         sql = config['sql']
