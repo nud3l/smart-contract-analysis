@@ -51,3 +51,5 @@ data-loader/dist/
 
 analysis/\.ipynb_checkpoints/
 /venv/
+
+*.csv
