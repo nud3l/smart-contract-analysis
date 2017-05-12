@@ -53,3 +53,7 @@ analysis/\.ipynb_checkpoints/
 /venv/
 
 *.csv
+
+*.py~
+
+*.csv~
