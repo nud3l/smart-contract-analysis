@@ -1,13 +1,13 @@
 import csv
 
-start = 900
+start = 690
 
 newcsv  = []
 
-with open('50_percent_cheaters.csv', 'rb') as csvfile:
+with open('70_percent_cheaters2.csv', 'rb') as csvfile:
     experiment50 = csv.DictReader(csvfile)
     for row in experiment50:
-        row['Run'] = int(row['Run']) - start
+        row['Run'] = int(row['Run']) + start
         newcsv.append(row)
 
 with open('changed.csv', 'wb') as newfile:
